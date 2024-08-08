@@ -21,7 +21,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         self.window = .init(frame: scene.coordinateSpace.bounds)
         self.window?.windowScene = scene
-        self.window?.rootViewController = ViewController()
+        self.window?.rootViewController = UINavigationController(rootViewController: NotesViewController())
         self.window?.makeKeyAndVisible()
     }
 
