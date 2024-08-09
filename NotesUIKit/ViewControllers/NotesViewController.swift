@@ -80,7 +80,25 @@ extension NotesViewController: NewNoteDelegate {
 
 // MARK: UITableViewDelegate
 
-extension NotesViewController: UITableViewDelegate {}
+extension NotesViewController: UITableViewDelegate {
+    func tableView(
+        _ tableView: UITableView,
+        commit editingStyle: UITableViewCell.EditingStyle,
+        forRowAt indexPath: IndexPath
+    ) {
+        switch editingStyle {
+            case .delete:
+                self.notes.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+
+            case .insert, .none:
+                break
+
+            @unknown default:
+                assertionFailure()
+        }
+    }
+}
 
 // MARK: UITableViewDataSource
 
